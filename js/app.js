@@ -1,8 +1,13 @@
+const rows = 5;
+const columns = 5;
+
 // Enemies our player must avoid
-var Enemy = function() {
+var Enemy = function(speed, row) {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
-
+    this.x = -100;
+    row ? this.y = 77*row : this.y = 50;
+    speed ? this.speed = speed : this.speed = 4;
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
     this.sprite = 'images/enemy-bug.png';
@@ -14,6 +19,12 @@ Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
+    if (this.x > 500) {
+        this.x= -100;
+        this.speed = Math.floor(Math.random() * 10)+1;
+    } else {
+        this.x = this.x+(dt*this.speed*25);
+    }
 };
 
 // Draw the enemy on the screen, required method for game
@@ -24,12 +35,36 @@ Enemy.prototype.render = function() {
 // Now write your own player class
 // This class requires an update(), render() and
 // a handleInput() method.
+var Player = function(){
+    this.sprite = 'images/char-boy.png';
+    this.x = 400;
+    this.y = 450;
+};
 
+Player.prototype.update = function(){
+
+};
+
+Player.prototype.render = function() {
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+};
+
+Player.prototype.handleInput = function(){
+
+};
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
 
+let player = new Player();
+let allEnemies = [];
+
+for(i = 1; i <= rows; i++) {
+    let speed = Math.floor(Math.random() * 10)+1;
+    let enemy = new Enemy(speed,i);
+    allEnemies.push(enemy);
+};
 
 
 // This listens for key presses and sends the keys to your
