@@ -71,11 +71,11 @@ Player.prototype.update = function() {
     };
     //check lose condition
     allEnemies.forEach(function(each) {
-        if (each.y + 5 === player.y && each.x > player.x - (movement - 30) && each.x < player.x + (movement-30)) {
-            player.x = 2 * movement;
-            player.y = (rows * yMovement) - 10;
+        if (each.y + 5 === this.y && each.x > this.x - (movement - 30) && each.x < this.x + (movement-30)) {
+            this.x = 2 * movement;
+            this.y = (rows * yMovement) - 10;
         };
-    });
+    }.bind(this));
 };
 
 /* Draw the player on the screen */
