@@ -1,12 +1,17 @@
 const rows = 5;
 const columns = 5;
+//const canvasHeight = 605;
+const canvasWidth = 505;
+
+const movement=canvasWidth/columns;
+const yMovement = 83;
 
 // Enemies our player must avoid
 var Enemy = function(speed, row) {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
-    this.x = -100;
-    row ? this.y = 77*row : this.y = 50;
+    this.x = -movement;
+    row ? this.y = (yMovement*row)-15 : this.y = yMovement-15;
     speed ? this.speed = speed : this.speed = 4;
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
@@ -19,11 +24,11 @@ Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
-    if (this.x > 500) {
-        this.x= -100;
+    if (this.x > canvasWidth) {
+        this.x= -movement;
         this.speed = Math.floor(Math.random() * 10)+1;
     } else {
-        this.x = this.x+(dt*this.speed*25);
+        this.x = this.x+(dt*this.speed*(movement/4));
     }
 };
 
@@ -37,8 +42,8 @@ Enemy.prototype.render = function() {
 // a handleInput() method.
 var Player = function(){
     this.sprite = 'images/char-boy.png';
-    this.x = 400;
-    this.y = 450;
+    this.x = 0;//canvasWidth-movement;
+    this.y=(rows*yMovement)-10;
 };
 
 Player.prototype.update = function(){
@@ -52,16 +57,24 @@ Player.prototype.render = function() {
 Player.prototype.handleInput = function(keycode){
     switch (keycode){
         case 'left':
-            this.x = this.x-50;
+            if (this.x >= movement) {
+            	this.x = this.x-movement;
+            }
             break;
         case 'right':
-            this.x = this.x+50;
+            if (this.x < canvasWidth-movement) {
+            	this.x = this.x+movement;
+        	}
             break;
         case 'up':
-            this.y=this.y-50;
+            if (this.y > 0) {
+            	this.y=this.y-yMovement;
+        	}
             break;
         case 'down':
-            this.y=this.y+50;
+            if (this.y < (yMovement*(rows+1))-10) {
+                this.y=this.y+yMovement;
+            }
             break;
     }
 };
