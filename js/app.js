@@ -134,7 +134,6 @@ for (let x = 0; x < 2; x++) {
  *
  * @param keyup - input from keyboard
  */
-
 document.addEventListener("keyup", function(e) {
     var allowedKeys = {
         37: "left",
