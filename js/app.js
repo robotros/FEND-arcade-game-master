@@ -70,7 +70,7 @@ Player.prototype.update = function() {
     };
     //check lose condition
     allEnemies.forEach(function(each) {
-        if (each.y + 5 === player.y && each.x > player.x - (movement - 30) && each.x < player.x + movement) {
+        if (each.y + 5 === player.y && each.x > player.x - (movement - 30) && each.x < player.x + (movement-30)) {
             player.x = 2 * movement;
             player.y = (rows * yMovement) - 10;
         };
@@ -126,7 +126,7 @@ for (x = 0; x < 2; x++) {
 };
 
 
-/* 
+/*
  * This listens for key presses and sends the keys to your
  * Player.handleInput() method. You don't need to modify this.
  *
