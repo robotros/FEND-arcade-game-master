@@ -1,6 +1,3 @@
-**Table of contents**
-
-
 # **fend-arcade-game-master**
 
 ## Technical Instructions
