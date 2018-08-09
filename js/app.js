@@ -1,3 +1,4 @@
+"use strict";
 /* app.js
  *
  */
@@ -34,8 +35,8 @@ Enemy.prototype.update = function(dt) {
 
     // check canvas boundary
     if (this.x > canvasWidth) {
-        r = (Math.floor(Math.random() * 10) / 2) + 1
-        r1 = Math.floor(Math.random() * 10) + 1
+        let r = (Math.floor(Math.random() * 10) / 2) + 1;
+        let r1 = Math.floor(Math.random() * 10) + 1;
         this.x = -movement * (r);
         this.speed = r1;
     } else {
@@ -113,12 +114,12 @@ Player.prototype.handleInput = function(keycode) {
 
 
 // Place the player object in a variable called player
-let player = new Player();
+const player = new Player();
 let allEnemies = [];
 
 // Place all enemy objects in an array called allEnemies
-for (x = 0; x < 2; x++) {
-    for (i = 1; i <= rows - 2; i++) {
+for (let x = 0; x < 2; x++) {
+    for (let i = 1; i <= rows - 2; i++) {
         let speed = Math.floor(Math.random() * 10) + 1;
         let enemy = new Enemy(speed, i);
         allEnemies.push(enemy);
