@@ -9,7 +9,7 @@ const movement = canvasWidth / columns;
 const yMovement = 83;
 
 /**
- * Enemies our player must avoid
+ * @decription Enemies our player must avoid
  * @constructor
  * @param speed - speed of the ememy
  * @param row - Trow the enemy will spawn on
@@ -26,7 +26,7 @@ var Enemy = function(speed, row) {
 };
 
 /**
- * Update the enemy's position, required method for game
+ * @decription Update the enemy's position, required method for game
  * @param dt - a time delta between ticks
  */
 Enemy.prototype.update = function(dt) {
@@ -47,7 +47,7 @@ Enemy.prototype.render = function() {
 };
 
 /**
- * Player of the game
+ * @decription Player of the game
  * @constructor
  */
 var Player = function() {
@@ -87,7 +87,7 @@ Player.prototype.render = function() {
 };
 
 /**
- * move player according to input
+ * @decription move player according to input
  * @param keycode - input movement direction
  */
 Player.prototype.handleInput = function(keycode) {
@@ -129,8 +129,8 @@ for (let x = 0; x < 2; x++) {
 }
 
 /*
- * This listens for key presses and sends the keys to your
- * Player.handleInput() method. You don't need to modify this.
+ * @decription This listens for key presses and sends the keys to your
+ * Player.handleInput() method.
  *
  * @param keyup - input from keyboard
  */
