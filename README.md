@@ -26,3 +26,6 @@ When the Goal is achieved the Player will respawn at the start.
 ### Losing
 When a bug comes into contact with a player the player loses.
 When a player loses he will respawn at the begining.
+
+#### Footnote
+* A live version is available at [aronroberts.com](http://www.aronroberts.com/arcade)
